@@ -185,39 +185,38 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         }
 
         .cursor-dot {
-          width: 18px;
-          height: 18px;
+          width: 16px;
+          height: 16px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(232, 0, 13, 1), rgba(232, 0, 13, 0.9));
-          box-shadow: 0 0 20px rgba(232, 0, 13, 0.95), 0 0 40px rgba(232, 0, 13, 0.35);
-          border: 2px solid rgba(255, 255, 255, 0.9);
-          transition: width 0.12s ease, height 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+          background: radial-gradient(circle, rgba(232, 0, 13, 1), rgba(232, 0, 13, 0.95));
+          box-shadow: 0 0 15px rgba(232, 0, 13, 0.9), 0 0 30px rgba(232, 0, 13, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .cursor-ring {
-          width: 90px;
-          height: 90px;
+          width: 80px;
+          height: 80px;
           border-radius: 50%;
-          border: 3px solid rgba(232, 0, 13, 0.9);
-          background: rgba(232, 0, 13, 0.12);
-          box-shadow: 0 0 28px rgba(232, 0, 13, 0.3);
+          border: 2px solid rgba(232, 0, 13, 0.8);
+          background: rgba(232, 0, 13, 0.1);
+          box-shadow: 0 0 20px rgba(232, 0, 13, 0.3);
           z-index: 2147483646;
         }
 
         .cursor-dot--hover {
-          width: 32px;
-          height: 32px;
+          width: 24px;
+          height: 24px;
           background: rgba(255, 255, 255, 0.95);
           border-color: var(--red);
-          box-shadow: 0 0 32px rgba(255, 255, 255, 0.95), 0 0 80px rgba(255, 255, 255, 0.3);
+          box-shadow: 0 0 25px rgba(255, 255, 255, 0.95), 0 0 50px rgba(255, 255, 255, 0.3);
         }
 
         .cursor-ring--hover {
-          width: 150px;
-          height: 150px;
+          width: 120px;
+          height: 120px;
           border-color: rgba(232, 0, 13, 1);
-          background: rgba(232, 0, 13, 0.2);
-          box-shadow: 0 0 90px rgba(232, 0, 13, 0.45);
+          background: rgba(232, 0, 13, 0.18);
+          box-shadow: 0 0 60px rgba(232, 0, 13, 0.4);
         }
       `}),(0,j.jsx)(`div`,{className:`cursor-ring`,ref:t}),(0,j.jsx)(`div`,{className:`cursor-dot`,ref:e})]})}function Xn(){let[e,t]=(0,_.useState)(0),n=(0,_.useRef)(null),r=(0,_.useRef)(null),i=[`/snyptr-website/hero-landing.jpg`,`/snyptr-website/hero-2.jpg`,`/snyptr-website/hero-3.jpg`,`/snyptr-website/hero-4.jpg`];return(0,_.useEffect)(()=>{let e=n.current,t=e.getContext(`2d`),r=[],i,a=()=>{e.width=window.innerWidth,e.height=window.innerHeight};a(),window.addEventListener(`resize`,a);class o{constructor(){this.reset()}reset(){this.x=Math.random()*e.width,this.y=e.height+Math.random()*100,this.size=Math.random()*80+20,this.speedY=-(Math.random()*.4+.1),this.speedX=(Math.random()-.5)*.3,this.opacity=Math.random()*.12+.03,this.life=0,this.maxLife=Math.random()*300+200}update(){this.x+=this.speedX,this.y+=this.speedY,this.life++,this.life>this.maxLife&&this.reset();let e=this.life/this.maxLife;this.currentOpacity=this.opacity*Math.sin(e*Math.PI)}draw(){let e=t.createRadialGradient(this.x,this.y,0,this.x,this.y,this.size);e.addColorStop(0,`rgba(232, 0, 13, ${this.currentOpacity})`),e.addColorStop(1,`rgba(232, 0, 13, 0)`),t.beginPath(),t.arc(this.x,this.y,this.size,0,Math.PI*2),t.fillStyle=e,t.fill()}}for(let e=0;e<40;e++){let e=new o;e.life=Math.random()*e.maxLife,r.push(e)}let s=()=>{t.clearRect(0,0,e.width,e.height),r.forEach(e=>{e.update(),e.draw()}),i=requestAnimationFrame(s)};return s(),()=>{cancelAnimationFrame(i),window.removeEventListener(`resize`,a)}},[]),(0,_.useEffect)(()=>{let e=setInterval(()=>{t(e=>(e+1)%i.length)},1500);return()=>clearInterval(e)},[]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`style`,{children:`
         .hero {
