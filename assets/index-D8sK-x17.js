@@ -171,73 +171,46 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           .navbar { padding: 20px 24px; }
           .navbar--scrolled { padding: 14px 24px; }
         }
-      `}),(0,j.jsxs)(`nav`,{className:`navbar ${e?`navbar--scrolled`:``}`,children:[(0,j.jsxs)(A,{to:`/`,className:`navbar__logo`,children:[`SNYPTR`,(0,j.jsx)(`span`,{className:`navbar__logo-dot`})]}),(0,j.jsx)(`ul`,{className:`navbar__links`,children:a.map(({to:e,label:t})=>(0,j.jsx)(`li`,{children:t===`Shop`?(0,j.jsx)(A,{to:e,className:`navbar__cta ${i.pathname===e?`active`:``}`,children:t}):(0,j.jsx)(A,{to:e,className:i.pathname===e?`active`:``,children:t})},e))}),(0,j.jsxs)(`button`,{className:`navbar__hamburger ${n?`open`:``}`,onClick:()=>r(!n),"aria-label":`Menu`,children:[(0,j.jsx)(`span`,{}),(0,j.jsx)(`span`,{}),(0,j.jsx)(`span`,{})]})]}),(0,j.jsx)(`div`,{className:`navbar__mobile ${n?`open`:``}`,children:a.map(({to:e,label:t})=>(0,j.jsx)(A,{to:e,children:t},e))})]})}function Yn(){let e=(0,_.useRef)(null),t=(0,_.useRef)(null);return(0,_.useEffect)(()=>{let n=e.current,r=t.current;if(!n||!r)return;let i=(e,t)=>{let i=`translate3d(${e}px, ${t}px, 0)`;n.style.transform=`${i} translate(-50%, -50%)`,r.style.transform=`${i} translate(-50%, -50%)`},a=e=>{i(e.clientX,e.clientY)},o=document.querySelectorAll(`a, button, input, textarea, select, label, .product-card, .team-card, .win-card, .footer__contact-link`),s=()=>{n.classList.add(`cursor-dot--hover`),r.classList.add(`cursor-ring--hover`)},c=()=>{n.classList.remove(`cursor-dot--hover`),r.classList.remove(`cursor-ring--hover`)};o.forEach(e=>{e.addEventListener(`mouseenter`,s),e.addEventListener(`mouseleave`,c)});let l=document.body.style.cursor;return document.body.style.cursor=`none`,window.addEventListener(`mousemove`,a),i(window.innerWidth/2,window.innerHeight/2),()=>{window.removeEventListener(`mousemove`,a),o.forEach(e=>{e.removeEventListener(`mouseenter`,s),e.removeEventListener(`mouseleave`,c)}),document.body.style.cursor=l}},[]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`style`,{children:`
-        .cursor-dot,
-        .cursor-ring {
+      `}),(0,j.jsxs)(`nav`,{className:`navbar ${e?`navbar--scrolled`:``}`,children:[(0,j.jsxs)(A,{to:`/`,className:`navbar__logo`,children:[`SNYPTR`,(0,j.jsx)(`span`,{className:`navbar__logo-dot`})]}),(0,j.jsx)(`ul`,{className:`navbar__links`,children:a.map(({to:e,label:t})=>(0,j.jsx)(`li`,{children:t===`Shop`?(0,j.jsx)(A,{to:e,className:`navbar__cta ${i.pathname===e?`active`:``}`,children:t}):(0,j.jsx)(A,{to:e,className:i.pathname===e?`active`:``,children:t})},e))}),(0,j.jsxs)(`button`,{className:`navbar__hamburger ${n?`open`:``}`,onClick:()=>r(!n),"aria-label":`Menu`,children:[(0,j.jsx)(`span`,{}),(0,j.jsx)(`span`,{}),(0,j.jsx)(`span`,{})]})]}),(0,j.jsx)(`div`,{className:`navbar__mobile ${n?`open`:``}`,children:a.map(({to:e,label:t})=>(0,j.jsx)(A,{to:e,children:t},e))})]})}function Yn(){let e=(0,_.useRef)(null);return(0,_.useEffect)(()=>{let t=e.current;if(!t)return;let n=window.innerWidth/2,r=window.innerHeight/2,i=e=>{n=e.clientX,r=e.clientY,t.style.transform=`translate(${n}px, ${r}px)`},a=()=>t.classList.add(`cursor--hover`),o=()=>t.classList.remove(`cursor--hover`);document.querySelectorAll(`a, button, input, textarea, select, label`).forEach(e=>{e.addEventListener(`mouseenter`,a),e.addEventListener(`mouseleave`,o)});let s=()=>{t.classList.add(`cursor--click`),setTimeout(()=>t.classList.remove(`cursor--click`),300)};return document.body.style.cursor=`none`,window.addEventListener(`mousemove`,i),window.addEventListener(`click`,s),t.style.transform=`translate(${n}px, ${r}px)`,()=>{window.removeEventListener(`mousemove`,i),window.removeEventListener(`click`,s),document.querySelectorAll(`a, button, input, textarea, select, label`).forEach(e=>{e.removeEventListener(`mouseenter`,a),e.removeEventListener(`mouseleave`,o)}),document.body.style.cursor=``}},[]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`style`,{children:`
+        * { cursor: none !important; }
+
+        .cursor {
           pointer-events: none;
           position: fixed;
-          left: 0;
           top: 0;
-          transform: translate(-50%, -50%);
+          left: 0;
           z-index: 2147483647;
           will-change: transform;
-          cursor: none !important;
+          /* offset so center of SVG is at cursor tip */
+          margin-left: -20px;
+          margin-top: -20px;
+          transition: opacity 0.2s ease;
         }
 
-        .cursor-dot {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(232, 0, 13, 1), rgba(232, 0, 13, 0.95));
-          box-shadow: 0 0 15px rgba(232, 0, 13, 0.9), 0 0 30px rgba(232, 0, 13, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.8);
+        .cursor svg {
+          width: 40px;
+          height: 40px;
+          transition: transform 0.15s ease;
+          filter: drop-shadow(0 0 6px rgba(232, 0, 13, 0.8));
         }
 
-        .cursor-ring {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          border: 2px solid rgba(232, 0, 13, 0.8);
-          background: rgba(232, 0, 13, 0.1);
-          box-shadow: 0 0 20px rgba(232, 0, 13, 0.3);
-          z-index: 2147483646;
+        /* Outer ring */
+        .cursor__outer {
+          transition: r 0.15s ease, opacity 0.15s ease;
         }
 
-        .cursor-ring::before,
-        .cursor-ring::after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 44px;
-          height: 2px;
-          background: rgba(232, 0, 13, 0.8);
-          transform: translate(-50%, -50%);
-          opacity: 0.55;
-          pointer-events: none;
+        /* Scale up on hover */
+        .cursor--hover svg {
+          transform: scale(1.5);
+          filter: drop-shadow(0 0 10px rgba(232, 0, 13, 1));
         }
 
-        .cursor-ring::after {
-          width: 2px;
-          height: 44px;
+        /* Click burst */
+        .cursor--click svg {
+          transform: scale(0.8);
+          filter: drop-shadow(0 0 16px rgba(232, 0, 13, 1));
         }
-
-        .cursor-dot--hover {
-          width: 24px;
-          height: 24px;
-          background: rgba(255, 255, 255, 0.95);
-          border-color: var(--red);
-          box-shadow: 0 0 25px rgba(255, 255, 255, 0.95), 0 0 50px rgba(255, 255, 255, 0.3);
-        }
-
-        .cursor-ring--hover {
-          width: 120px;
-          height: 120px;
-          border-color: rgba(232, 0, 13, 1);
-          background: rgba(232, 0, 13, 0.18);
-          box-shadow: 0 0 60px rgba(232, 0, 13, 0.4);
-        }
-      `}),(0,j.jsx)(`div`,{className:`cursor-ring`,ref:t}),(0,j.jsx)(`div`,{className:`cursor-dot`,ref:e})]})}function Xn(){let[e,t]=(0,_.useState)(0),n=(0,_.useRef)(null),r=(0,_.useRef)(null),i=[`/snyptr-website/hero-landing.jpg`,`/snyptr-website/hero-2.jpg`,`/snyptr-website/hero-3.jpg`,`/snyptr-website/hero-4.jpg`];return(0,_.useEffect)(()=>{let e=n.current,t=e.getContext(`2d`),r=[],i,a=()=>{e.width=window.innerWidth,e.height=window.innerHeight};a(),window.addEventListener(`resize`,a);class o{constructor(){this.reset()}reset(){this.x=Math.random()*e.width,this.y=e.height+Math.random()*100,this.size=Math.random()*80+20,this.speedY=-(Math.random()*.4+.1),this.speedX=(Math.random()-.5)*.3,this.opacity=Math.random()*.12+.03,this.life=0,this.maxLife=Math.random()*300+200}update(){this.x+=this.speedX,this.y+=this.speedY,this.life++,this.life>this.maxLife&&this.reset();let e=this.life/this.maxLife;this.currentOpacity=this.opacity*Math.sin(e*Math.PI)}draw(){let e=t.createRadialGradient(this.x,this.y,0,this.x,this.y,this.size);e.addColorStop(0,`rgba(232, 0, 13, ${this.currentOpacity})`),e.addColorStop(1,`rgba(232, 0, 13, 0)`),t.beginPath(),t.arc(this.x,this.y,this.size,0,Math.PI*2),t.fillStyle=e,t.fill()}}for(let e=0;e<40;e++){let e=new o;e.life=Math.random()*e.maxLife,r.push(e)}let s=()=>{t.clearRect(0,0,e.width,e.height),r.forEach(e=>{e.update(),e.draw()}),i=requestAnimationFrame(s)};return s(),()=>{cancelAnimationFrame(i),window.removeEventListener(`resize`,a)}},[]),(0,_.useEffect)(()=>{let e=setInterval(()=>{t(e=>(e+1)%i.length)},1500);return()=>clearInterval(e)},[]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`style`,{children:`
+      `}),(0,j.jsx)(`div`,{className:`cursor`,ref:e,children:(0,j.jsxs)(`svg`,{viewBox:`0 0 40 40`,fill:`none`,xmlns:`http://www.w3.org/2000/svg`,children:[(0,j.jsx)(`circle`,{cx:`20`,cy:`20`,r:`17`,stroke:`#E8000D`,strokeWidth:`1.5`}),(0,j.jsx)(`circle`,{cx:`20`,cy:`20`,r:`8`,stroke:`#E8000D`,strokeWidth:`1.5`}),(0,j.jsx)(`circle`,{cx:`20`,cy:`20`,r:`2`,fill:`#E8000D`}),(0,j.jsx)(`line`,{x1:`20`,y1:`2`,x2:`20`,y2:`10`,stroke:`#E8000D`,strokeWidth:`1.5`,strokeLinecap:`round`}),(0,j.jsx)(`line`,{x1:`20`,y1:`30`,x2:`20`,y2:`38`,stroke:`#E8000D`,strokeWidth:`1.5`,strokeLinecap:`round`}),(0,j.jsx)(`line`,{x1:`2`,y1:`20`,x2:`10`,y2:`20`,stroke:`#E8000D`,strokeWidth:`1.5`,strokeLinecap:`round`}),(0,j.jsx)(`line`,{x1:`30`,y1:`20`,x2:`38`,y2:`20`,stroke:`#E8000D`,strokeWidth:`1.5`,strokeLinecap:`round`})]})})]})}function Xn(){let[e,t]=(0,_.useState)(0),n=(0,_.useRef)(null),r=(0,_.useRef)(null),i=[`/snyptr-website/hero-landing.jpg`,`/snyptr-website/hero-2.jpg`,`/snyptr-website/hero-3.jpg`,`/snyptr-website/hero-4.jpg`];return(0,_.useEffect)(()=>{let e=n.current,t=e.getContext(`2d`),r=[],i,a=()=>{e.width=window.innerWidth,e.height=window.innerHeight};a(),window.addEventListener(`resize`,a);class o{constructor(){this.reset()}reset(){this.x=Math.random()*e.width,this.y=e.height+Math.random()*100,this.size=Math.random()*80+20,this.speedY=-(Math.random()*.4+.1),this.speedX=(Math.random()-.5)*.3,this.opacity=Math.random()*.12+.03,this.life=0,this.maxLife=Math.random()*300+200}update(){this.x+=this.speedX,this.y+=this.speedY,this.life++,this.life>this.maxLife&&this.reset();let e=this.life/this.maxLife;this.currentOpacity=this.opacity*Math.sin(e*Math.PI)}draw(){let e=t.createRadialGradient(this.x,this.y,0,this.x,this.y,this.size);e.addColorStop(0,`rgba(232, 0, 13, ${this.currentOpacity})`),e.addColorStop(1,`rgba(232, 0, 13, 0)`),t.beginPath(),t.arc(this.x,this.y,this.size,0,Math.PI*2),t.fillStyle=e,t.fill()}}for(let e=0;e<40;e++){let e=new o;e.life=Math.random()*e.maxLife,r.push(e)}let s=()=>{t.clearRect(0,0,e.width,e.height),r.forEach(e=>{e.update(),e.draw()}),i=requestAnimationFrame(s)};return s(),()=>{cancelAnimationFrame(i),window.removeEventListener(`resize`,a)}},[]),(0,_.useEffect)(()=>{let e=setInterval(()=>{t(e=>(e+1)%i.length)},1500);return()=>clearInterval(e)},[]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`style`,{children:`
         .hero {
           position: relative;
           width: 100%;
