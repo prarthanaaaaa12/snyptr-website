@@ -1,6 +1,7 @@
 import HeroSection from '../components/HeroSection'
 import ProblemSection from '../components/ProblemSection'
 import SolutionSection from '../components/SolutionSection'
+import CustomersSection from '../components/CustomersSection'
 import ProductsSection from '../components/ProductsSection'
 import ValidationSection from '../components/ValidationSection'
 import MentorsSection from '../components/MentorsSection'
@@ -14,6 +15,7 @@ export default function Home() {
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
+      <CustomersSection />
       <ProductsSection />
       <ValidationSection />
       <MentorsSection />

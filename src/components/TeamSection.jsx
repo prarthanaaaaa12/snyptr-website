@@ -16,7 +16,7 @@ const team = [
   {
     name: 'Pranav P Krishna',
     role: 'CTO',
-    desc: 'Leads the design and development of AI-driven accuracy, motion, and error-detection models. Translates raw sensor data into clear, actionable insights for real-time training feedback.',
+    desc: 'Heads the design and development of AI-driven accuracy, motion, and error-detection models. Translates raw sensor data into clear, actionable insights for real-time training feedback.',
     img: '/found-3.jpg',
     social: '@pranav',
   },

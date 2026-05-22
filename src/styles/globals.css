@@ -28,13 +28,10 @@ body {
   color: var(--black);
   overflow-x: hidden;
   cursor: none;
-  perspective: 1600px;
-  transform-style: preserve-3d;
 }
 
 #root {
   min-height: 100vh;
-  transform-style: preserve-3d;
 }
 
 /* Hide default cursor everywhere */

@@ -1,40 +1,40 @@
-export default function SolutionSection() {
-  const features = [
+export default function CustomersSection() {
+  const customers = [
     {
       num: '01',
-      title: 'Real-Time Haptic Feedback',
-      desc: 'Vibration patterns on your wrist correct aim deviation the instant it happens — no coach needed.',
-      icon: '◎'
+      title: 'Olympic & ISSF Shooters',
+      desc: 'Enhancing precision and muscle memory for elite athletes competing at the highest global levels.',
+      icon: '🎯'
     },
     {
       num: '02',
-      title: 'Muscle Memory Reinforcement',
-      desc: 'Repeated haptic cues train your body to self-correct, building precision at a neurological level.',
-      icon: '⚡'
+      title: 'Police Training Centers',
+      desc: 'Equipping law enforcement with realistic, haptic-driven scenarios to improve reaction times and tactical accuracy.',
+      icon: '🛡️'
     },
     {
       num: '03',
-      title: 'Sensor-Integrated Target',
-      desc: 'Detachable smart target registers and localizes every shot with millimetre accuracy.',
-      icon: '⊕'
+      title: 'National Defence Academy',
+      desc: 'Providing rigorous, analytics-backed training tools to forge the next generation of elite defense forces.',
+      icon: '🦅'
     },
     {
       num: '04',
-      title: 'AI-Powered Shot Analysis',
-      desc: 'Cloud dashboard turns raw sensor data into actionable insights — patterns, errors, progress.',
-      icon: '◈'
+      title: 'Para-Athletes',
+      desc: 'Offering accessible, highly adaptable sensor feedback systems tailored for specialized and adaptive training needs.',
+      icon: '♿'
     },
   ]
 
   return (
     <>
       <style>{`
-        .solution {
+        .customers {
           background: var(--black);
-          padding: 140px 48px;
+          padding: 0 48px 140px;
           overflow: hidden;
         }
-        .solution__top {
+        .customers__top {
           max-width: 1200px;
           margin: 0 auto 80px;
           display: flex;
@@ -43,21 +43,21 @@ export default function SolutionSection() {
           flex-wrap: wrap;
           gap: 24px;
         }
-        .solution__title {
+        .customers__title {
           font-family: 'Bebas Neue', sans-serif;
           font-size: clamp(56px, 8vw, 120px);
           color: var(--white);
           line-height: 0.9;
         }
-        .solution__title span { color: var(--red); }
-        .solution__intro {
+        .customers__title span { color: var(--red); }
+        .customers__intro {
           max-width: 360px;
           font-size: 15px;
           font-weight: 300;
           line-height: 1.8;
           color: rgba(255,255,255,0.5);
         }
-        .solution__grid {
+        .customers__grid {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
@@ -66,7 +66,7 @@ export default function SolutionSection() {
           background: rgba(255,255,255,0.08);
           border: 1px solid rgba(255,255,255,0.08);
         }
-        .solution__card {
+        .customers__card {
           background: var(--black);
           padding: 40px 32px;
           transition: background 0.4s, transform 0.4s ease, box-shadow 0.4s ease;
@@ -74,11 +74,11 @@ export default function SolutionSection() {
           overflow: hidden;
           transform-style: preserve-3d;
         }
-        .solution__card:hover {
+        .customers__card:hover {
           transform: translateY(-12px) rotateX(1deg);
           box-shadow: 0 26px 72px rgba(0,0,0,0.25);
         }
-        .solution__card::after {
+        .customers__card::after {
           content: '';
           position: absolute;
           bottom: 0;
@@ -89,60 +89,59 @@ export default function SolutionSection() {
           transform: scaleX(0);
           transition: transform 0.4s ease;
         }
-        .solution__card:hover::after { transform: scaleX(1); }
-        .solution__card:hover { background: rgba(232,0,13,0.05); }
-        .solution__card-num {
+        .customers__card:hover::after { transform: scaleX(1); }
+        .customers__card:hover { background: rgba(232,0,13,0.05); }
+        .customers__card-num {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 48px;
           color: rgba(255,255,255,0.08);
           line-height: 1;
           margin-bottom: 24px;
         }
-        .solution__card-icon {
+        .customers__card-icon {
           font-size: 28px;
           margin-bottom: 16px;
           display: block;
           color: var(--red);
         }
-        .solution__card-title {
+        .customers__card-title {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 22px;
           color: var(--white);
           letter-spacing: 0.03em;
           margin-bottom: 12px;
         }
-        .solution__card-desc {
+        .customers__card-desc {
           font-size: 13px;
           line-height: 1.7;
           color: rgba(255,255,255,0.45);
         }
         @media (max-width: 900px) {
-          .solution__grid { grid-template-columns: 1fr 1fr; }
-          .solution { padding: 80px 24px; }
+          .customers__grid { grid-template-columns: 1fr 1fr; }
+          .customers { padding: 0 24px 80px; }
         }
         @media (max-width: 600px) {
-          .solution__grid { grid-template-columns: 1fr; }
+          .customers__grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
-      <section className="solution">
-        <div className="solution__top">
-          <h2 className="solution__title">
-            The<br /><span>Solution</span>
+      <section className="customers">
+        <div className="customers__top">
+          <h2 className="customers__title">
+            Our<br /><span>Customers</span>
           </h2>
-          <p className="solution__intro">
-            A smart wristband paired with a laser-mounted module and sensor-enhanced target.
-            AI-powered. India-built. First of its kind.
+          <p className="customers__intro">
+            Trusted by the best. From elite athletes aiming for gold to armed forces preparing for mission-critical scenarios.
           </p>
         </div>
 
-        <div className="solution__grid">
-          {features.map(f => (
-            <div className="solution__card" key={f.num}>
-              <div className="solution__card-num">{f.num}</div>
-              <span className="solution__card-icon">{f.icon}</span>
-              <div className="solution__card-title">{f.title}</div>
-              <p className="solution__card-desc">{f.desc}</p>
+        <div className="customers__grid">
+          {customers.map(c => (
+            <div className="customers__card" key={c.num}>
+              <div className="customers__card-num">{c.num}</div>
+              <span className="customers__card-icon">{c.icon}</span>
+              <div className="customers__card-title">{c.title}</div>
+              <p className="customers__card-desc">{c.desc}</p>
             </div>
           ))}
         </div>

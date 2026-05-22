@@ -365,20 +365,8 @@ export default function HeroSection() {
           <p className="hero__sub">
             AI-powered haptic feedback for precision shooting. Built for athletes, police & defence.
           </p>
-          <div className="hero__actions">
-            <a href="/products" className="hero__btn-primary">Explore Products</a>
-            <a href="/about" className="hero__btn-secondary">Our Story</a>
-          </div>
         </div>
 
-     
-
-        
-
-        <div className="hero__scroll">
-          <span>Scroll</span>
-          <div className="hero__scroll-line" />
-        </div>
       </section>
     </>
   )

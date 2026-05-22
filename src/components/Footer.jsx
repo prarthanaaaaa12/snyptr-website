@@ -91,12 +91,30 @@ export default function Footer() {
           color: rgba(255,255,255,0.2);
         }
         .footer__made span { color: rgba(255,255,255,0.4); }
+        .footer__cert {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .footer__cert img {
+          max-height: 48px;
+          opacity: 0.7;
+          transition: opacity 0.3s, transform 0.3s;
+          border-radius: 4px;
+          filter: grayscale(100%) contrast(1.2);
+        }
+        .footer__cert img:hover {
+          opacity: 1;
+          filter: grayscale(0%) contrast(1);
+          transform: translateY(-2px);
+        }
         @media (max-width: 900px) {
           .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
           .footer { padding: 60px 24px 32px; }
         }
         @media (max-width: 500px) {
           .footer__top { grid-template-columns: 1fr; }
+          .footer__bottom { flex-direction: column; text-align: center; gap: 24px; }
         }
       `}</style>
 
@@ -152,6 +170,11 @@ export default function Footer() {
             <p className="footer__copy">
               © 2026 <span>SNYPTR</span>. All rights reserved.
             </p>
+            
+            <div className="footer__cert">
+              <img src="/iso-certificate.jpeg" alt="ISO Certification" />
+            </div>
+
             <p className="footer__made">
               Built in <span>Bangalore, India 🇮🇳</span>
             </p>

@@ -1,64 +1,85 @@
 import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 export default function Cursor() {
   const cursorDotRef = useRef(null)
-  const cursorRingRef = useRef(null)
 
   useEffect(() => {
     const dot = cursorDotRef.current
-    const ring = cursorRingRef.current
-    if (!dot || !ring) return
+    if (!dot) return
+
+    let lastX = window.innerWidth / 2
+    let lastY = window.innerHeight / 2
 
     const updateCursor = (x, y) => {
+      lastX = x
+      lastY = y
       const transform = `translate3d(${x}px, ${y}px, 0)`
       dot.style.transform = `${transform} translate(-50%, -50%)`
-      ring.style.transform = `${transform} translate(-50%, -50%)`
     }
 
     const onMouseMove = (event) => {
       updateCursor(event.clientX, event.clientY)
     }
 
-    const hoverElements = document.querySelectorAll(
-      'a, button, input, textarea, select, label, .product-card, .team-card, .win-card, .footer__contact-link'
-    )
-
-    const addHoverState = () => {
-      dot.classList.add('cursor-dot--hover')
-      ring.classList.add('cursor-ring--hover')
+    const checkHover = (element) => {
+      if (!element) return false
+      return element.closest(
+        'a, button, input, textarea, select, label, .product-card, .team-card, .win-card, .footer__contact-link, [role="button"], [style*="cursor: pointer"]'
+      )
     }
 
-    const removeHoverState = () => {
-      dot.classList.remove('cursor-dot--hover')
-      ring.classList.remove('cursor-ring--hover')
+    const onMouseOver = (event) => {
+      if (checkHover(event.target)) {
+        dot.classList.add('cursor-dot--hover')
+      } else {
+        dot.classList.remove('cursor-dot--hover')
+      }
     }
 
-    hoverElements.forEach((el) => {
-      el.addEventListener('mouseenter', addHoverState)
-      el.addEventListener('mouseleave', removeHoverState)
-    })
+    const onScroll = () => {
+      const target = document.elementFromPoint(lastX, lastY)
+      if (checkHover(target)) {
+        dot.classList.add('cursor-dot--hover')
+      } else {
+        dot.classList.remove('cursor-dot--hover')
+      }
+    }
+
+    const onMouseLeave = () => {
+      dot.style.opacity = '0'
+    }
+
+    const onMouseEnter = () => {
+      dot.style.opacity = '1'
+    }
 
     const previousCursor = document.body.style.cursor
     document.body.style.cursor = 'none'
 
     window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseover', onMouseOver)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('mouseleave', onMouseLeave)
+    document.addEventListener('mouseenter', onMouseEnter)
+    
+    // Initial position in center of viewport
     updateCursor(window.innerWidth / 2, window.innerHeight / 2)
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
-      hoverElements.forEach((el) => {
-        el.removeEventListener('mouseenter', addHoverState)
-        el.removeEventListener('mouseleave', removeHoverState)
-      })
+      window.removeEventListener('mouseover', onMouseOver)
+      window.removeEventListener('scroll', onScroll)
+      document.removeEventListener('mouseleave', onMouseLeave)
+      document.removeEventListener('mouseenter', onMouseEnter)
       document.body.style.cursor = previousCursor
     }
   }, [])
 
-  return (
+  return createPortal(
     <>
       <style>{`
-        .cursor-dot,
-        .cursor-ring {
+        .cursor-dot {
           pointer-events: none;
           position: fixed;
           left: 0;
@@ -67,46 +88,28 @@ export default function Cursor() {
           z-index: 2147483647;
           will-change: transform;
           cursor: none !important;
+          opacity: 1;
         }
 
         .cursor-dot {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(232, 0, 13, 1), rgba(232, 0, 13, 0.9));
-          box-shadow: 0 0 20px rgba(232, 0, 13, 0.95), 0 0 40px rgba(232, 0, 13, 0.35);
-          border: 2px solid rgba(255, 255, 255, 0.9);
-          transition: width 0.12s ease, height 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
-        }
-
-        .cursor-ring {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          border: 3px solid rgba(232, 0, 13, 0.9);
-          background: rgba(232, 0, 13, 0.12);
-          box-shadow: 0 0 28px rgba(232, 0, 13, 0.3);
-          z-index: 2147483646;
+          width: 36px;
+          height: 36px;
+          background: url('/icons8-target-48.svg') no-repeat center / contain;
+          filter: drop-shadow(0 0 8px rgba(232, 0, 13, 0.5));
+          transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+          border-radius: 0;
+          border: none;
+          box-shadow: none;
         }
 
         .cursor-dot--hover {
-          width: 32px;
-          height: 32px;
-          background: rgba(255, 255, 255, 0.95);
-          border-color: var(--red);
-          box-shadow: 0 0 32px rgba(255, 255, 255, 0.95), 0 0 80px rgba(255, 255, 255, 0.3);
-        }
-
-        .cursor-ring--hover {
-          width: 150px;
-          height: 150px;
-          border-color: rgba(232, 0, 13, 1);
-          background: rgba(232, 0, 13, 0.2);
-          box-shadow: 0 0 90px rgba(232, 0, 13, 0.45);
+          width: 48px;
+          height: 48px;
+          filter: drop-shadow(0 0 12px rgba(255, 26, 26, 0.7));
         }
       `}</style>
-      <div className="cursor-ring" ref={cursorRingRef} />
       <div className="cursor-dot" ref={cursorDotRef} />
-    </>
+    </>,
+    document.body
   )
 }

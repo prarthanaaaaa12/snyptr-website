@@ -46,7 +46,7 @@ const products = [
     id: 5,
     name: 'AR/VR Visualization Suite',
     tag: 'Software',
-    price: '₹2,499/mo',
+    price: 'Coming Soon',
     desc: 'Immersive visualization-based training for next-level mental rehearsal. Simulate range environments without live fire.',
     specs: ['VR range simulation', 'Mental rehearsal mode', 'Performance overlays', 'Multi-device support', 'Coach integration'],
     img: '/prod5.png',
